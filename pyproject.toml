@@ -1,0 +1,29 @@
+[project]
+name = "abstencao"
+version = "0.1.0"
+description = "Pipeline de dados e modelo de regressão da taxa de abstenção por município nas eleições de 2026"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.20.0",
+    "arq>=0.28.0",
+    "fastapi[standard]>=0.143.0",
+    "joblib>=1.6.0",
+    "pandas>=3.0.6",
+    "psycopg[binary]>=3.3.6",
+    "pydantic-settings>=2.15.0",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
+    "sqlalchemy>=2.1.4",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.0,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "jupyterlab>=4.6.4",
+    "matplotlib>=3.11.2",
+    "seaborn>=0.13.2",
+]
