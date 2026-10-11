@@ -38,8 +38,9 @@ def extrair_indicadores() -> pd.DataFrame:
     populacao = _consultar_agregado(TABELA_POPULACAO, PERIODO_POPULACAO, VARIAVEL_POPULACAO)
     indicadores = pib.join([vab, populacao], how="outer")
     indicadores["pib_per_capita"] = indicadores["pib_mil_reais"] * 1000 / indicadores["populacao"]
-    indicadores["pct_vab_agro"] = indicadores["vab_agro"] / indicadores["vab_total"]
-    indicadores["pct_vab_adm_publica"] = indicadores["vab_adm_publica"] / indicadores["vab_total"]
+    vab_total_positivo = indicadores["vab_total"].where(indicadores["vab_total"] > 0)
+    indicadores["pct_vab_agro"] = indicadores["vab_agro"] / vab_total_positivo
+    indicadores["pct_vab_adm_publica"] = indicadores["vab_adm_publica"] / vab_total_positivo
     indicadores = indicadores.drop(columns=["vab_total", "vab_agro", "vab_adm_publica"])
     indicadores["populacao"] = indicadores["populacao"].astype("Int64")
     return indicadores.reset_index()
