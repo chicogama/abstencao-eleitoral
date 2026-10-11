@@ -1,0 +1,42 @@
+{
+  "versao": "v1",
+  "modelo_escolhido": "Gradient Boosting",
+  "criterio": "menor RMSE na validação cruzada (5 folds) do treino",
+  "metricas": [
+    {
+      "modelo": "Baseline: média",
+      "rmse_cv": null,
+      "rmse_teste": 0.04047,
+      "mae_teste": 0.03163,
+      "r2_teste": -4e-05
+    },
+    {
+      "modelo": "Baseline: repetir 2022",
+      "rmse_cv": null,
+      "rmse_teste": 0.02825,
+      "mae_teste": 0.02083,
+      "r2_teste": 0.51257
+    },
+    {
+      "modelo": "Linear Regression",
+      "rmse_cv": 0.01941,
+      "rmse_teste": 0.01889,
+      "mae_teste": 0.01471,
+      "r2_teste": 0.78205
+    },
+    {
+      "modelo": "Random Forest",
+      "rmse_cv": 0.01859,
+      "rmse_teste": 0.01841,
+      "mae_teste": 0.01377,
+      "r2_teste": 0.79304
+    },
+    {
+      "modelo": "Gradient Boosting",
+      "rmse_cv": 0.01797,
+      "rmse_teste": 0.01749,
+      "mae_teste": 0.01328,
+      "r2_teste": 0.81325
+    }
+  ]
+}
