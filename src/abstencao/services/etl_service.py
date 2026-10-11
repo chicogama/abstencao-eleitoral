@@ -6,7 +6,14 @@ from sqlalchemy import delete, func, insert, select
 from sqlalchemy.orm import Session
 
 from abstencao.core.config import settings
-from abstencao.models import CargaEtl, IndicadorMunicipio, Municipio, PerfilEleitorado, ResultadoEleicao
+from abstencao.models import (
+    CargaEtl,
+    IndicadorMunicipio,
+    Municipio,
+    PerfilEleitorado,
+    Previsao,
+    ResultadoEleicao,
+)
 from abstencao.services import etl_ibge, etl_tse
 
 logger = logging.getLogger(__name__)
@@ -54,7 +61,7 @@ def _gravar(db: Session, modelo: type, dados: pd.DataFrame) -> int:
 
 def carregar_municipios(db: Session) -> int:
     municipios = etl_tse.extrair_municipios()
-    for modelo in (ResultadoEleicao, PerfilEleitorado, IndicadorMunicipio):
+    for modelo in (Previsao, ResultadoEleicao, PerfilEleitorado, IndicadorMunicipio):
         db.execute(delete(modelo))
     db.execute(delete(Municipio))
     return _gravar(db, Municipio, municipios)
